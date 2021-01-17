@@ -10,7 +10,7 @@ if(isset($_SESSION['member_login'])==false)
 else
 {
     print 'ようこそ';
-    print $_SESSION['meber_name'];
+    print @$_SESSION['member_name'];
     print '様 ';
     print '<a href="member_logout.php">ログアウト</a><br />';
     print '<br />';
@@ -36,7 +36,7 @@ try {
     $dbh=new PDO($dsn,$user,$password);
     $dbh ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $sql='SELECT name,price,gazou FROM mst_product WHERE code=?';
+    $sql='SELECT name,price,gazou,num FROM mst_product WHERE code=?';
     $stmt=$dbh->prepare($sql);
     $data[]=$pro_code;
     $stmt->execute($data);
@@ -45,6 +45,7 @@ try {
     $pro_name=$rec['name'];
     $pro_price=$rec['price'];
     $pro_gazou_name=$rec['gazou'];
+    $pro_num=$rec['num'];
 
     $dbh=null;
 
@@ -56,7 +57,10 @@ try {
     {
         $disp_gazou='<img src="../product/gazou/'.$pro_gazou_name.'">';
     }
-print '<a href="shop_cartin.php?procode='.$pro_code.'">カードに入れる</a><br/><br/> ';
+
+    if ($pro_num>0){
+        print '<a href="shop_cartin.php?procode='.$pro_code.'">カードに入れる</a><br/><br/> ';
+    }
 }
 catch (Exception $e)
 {
@@ -78,10 +82,17 @@ print $pro_code;
 print $pro_name;
 ?>
 <br />
+在庫数<br />
+<?php
+print $pro_num;
+?>
+<br />
 価格<br />
 <?php
 print $pro_price;
 ?>円
+<br />
+
 <?php print $disp_gazou; ?>
 <br />
 <br /><br /><br />

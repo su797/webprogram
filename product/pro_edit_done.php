@@ -31,21 +31,26 @@ try {
     $pro_price=$_POST['price'];
     $pro_gazou_name_old=$_POST['gazou_name_old'];
     $pro_gazou_name=$_POST['gazou_name'];
+    $pro_num=$_POST['num'];
 
     $pro_code = htmlspecialchars($pro_code,ENT_QUOTES,'UTF-8');
     $pro_name = htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
     $pro_price = htmlspecialchars($pro_price,ENT_QUOTES,'UTF-8');
-
+    $pro_num = htmlspecialchars($pro_num,ENT_QUOTES,'UTF-8');
+    if (!isset($pro_gazou_name)||$pro_gazou_name==''){
+        $pro_gazou_name=$pro_gazou_name_old;
+    }
     $dsn='mysql:dbname=shop;host=localhost;charset=utf8';
     $user='root';
     $password='Ss123698745';
     $dbh=new PDO($dsn,$user,$password);
     $dbh ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $sql='UPDATE mst_product SET name=?,price=?,gazou=? WHERE code=?';
+    $sql='UPDATE mst_product SET name=?,price=?,gazou=?,num=? WHERE code=?';
     $stmt=$dbh->prepare($sql);
     $data[]=$pro_name;
     $data[]=$pro_price;
     $data[]=$pro_gazou_name;
+    $data[]=$pro_num;
     $data[]=$pro_code;
     $stmt->execute($data);
 

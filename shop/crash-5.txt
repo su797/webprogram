@@ -1,62 +1,63 @@
-date/time         : 2021-01-06, 17:14:52, 255ms
+date/time         : 2020-12-11, 01:39:14, 699ms
 computer name     : DESKTOP-L5T7BDS
 user name         : su797 <admin>
 operating system  : Windows NT New Tablet PC x64 build 9200
 system language   : Chinese (Simplified)
-system up time    : 10 days 16 hours
+system up time    : 8 days 10 hours
 program up time   : 2 seconds
 processors        : 8x Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
-physical memory   : 6994/16318 MB (free/total)
-free disk space   : (C:) 18.71 GB (E:) 144.25 GB
+physical memory   : 6236/16318 MB (free/total)
+free disk space   : (C:) 9.13 GB (E:) 147.40 GB
 display mode      : 1920x1080, 32 bit
-process id        : $3fcc
-allocated memory  : 57.78 MB
+process id        : $5ba0
+allocated memory  : 57.19 MB
 command line      : E:\phpstudy_pro\sendmail\sendmail.exe -t -i
 executable        : sendmail.exe
 exec. date/time   : 2011-06-18 01:10
 compiled with     : Delphi 2006/07
 madExcept version : 3.0l
-callstack crc     : $205f8196, $419d6944, $419d6944
+callstack crc     : $205f8196, $102890ed, $102890ed
 exception number  : 1
 exception class   : EInOutError
 exception message : I/O error 105.
 
-main thread ($5fb0):
-004b675c +18a8 sendmail.exe sendmail 922 +440 initialization
-77a053c1 +0021 ntdll.dll                      KiUserExceptionDispatcher
-0040474d +001d sendmail.exe System   262   +0 @AfterConstruction
-76396357 +0017 KERNEL32.DLL                   BaseThreadInitThunk
+main thread ($4950):
+004b675c +18a8 sendmail.exe sendmail        922 +440 initialization
+771953c1 +0021 ntdll.dll                             KiUserExceptionDispatcher
+0043feba +002a sendmail.exe IdTCPConnection 565   +2 TIdTCPConnection.GetResponse
+0040474d +001d sendmail.exe System          262   +0 @AfterConstruction
+750f6357 +0017 KERNEL32.DLL                          BaseThreadInitThunk
 
-thread $4828:
-76396357 +17 KERNEL32.DLL  BaseThreadInitThunk
+thread $7940:
+750f6357 +17 KERNEL32.DLL  BaseThreadInitThunk
 
-thread $5618:
-76396357 +17 KERNEL32.DLL  BaseThreadInitThunk
+thread $141c:
+750f6357 +17 KERNEL32.DLL  BaseThreadInitThunk
 
-thread $23d4:
-76396357 +17 KERNEL32.DLL  BaseThreadInitThunk
+thread $2d64:
+750f6357 +17 KERNEL32.DLL  BaseThreadInitThunk
 
 stack dump:
 0019f6b0  5c 67 4b 00 de fa ed 0e - 01 00 00 00 07 00 00 00  \gK.............
-0019f6c0  c4 f6 19 00 5c 67 4b 00 - 28 ca 52 02 5c 67 4b 00  ....\gK.(.R.\gK.
+0019f6c0  c4 f6 19 00 5c 67 4b 00 - 28 ca 3b 02 5c 67 4b 00  ....\gK.(.;.\gK.
 0019f6d0  5c 67 4b 00 f0 fd 19 00 - 70 ff 19 00 e0 f6 19 00  \gK.....p.......
-0019f6e0  00 00 00 00 64 30 40 00 - 00 00 00 00 00 50 52 02  ....d0@......PR.
-0019f6f0  5c 67 4b 00 00 00 00 00 - 1a 64 4b 00 00 50 52 02  \gK......dK..PR.
+0019f6e0  00 00 00 00 64 30 40 00 - 00 00 00 00 00 50 3b 02  ....d0@......P;.
+0019f6f0  5c 67 4b 00 00 00 00 00 - 1a 64 4b 00 00 50 3b 02  \gK......dK..P;.
 0019f700  18 f8 19 00 2c f7 19 00 - 38 f7 19 00 00 00 00 00  ....,...8.......
-0019f710  00 00 00 00 00 00 00 00 - 62 9f a1 77 18 f8 19 00  ........b..w....
+0019f710  00 00 00 00 00 00 00 00 - 62 9f 1a 77 18 f8 19 00  ........b..w....
 0019f720  f0 fd 19 00 68 f8 19 00 - a4 f7 19 00 d8 fd 19 00  ....h...........
-0019f730  80 9f a1 77 f0 fd 19 00 - 00 f8 19 00 34 9f a1 77  ...w........4..w
+0019f730  80 9f 1a 77 f0 fd 19 00 - 00 f8 19 00 34 9f 1a 77  ...w........4..w
 0019f740  18 f8 19 00 f0 fd 19 00 - 68 f8 19 00 a4 f7 19 00  ........h.......
 0019f750  1c 67 4b 00 f0 fd 19 00 - 18 f8 19 00 00 00 00 00  .gK.............
-0019f760  5f 8f 9f 77 18 f8 19 00 - f0 fd 19 00 68 f8 19 00  _..w........h...
+0019f760  5f 8f 18 77 18 f8 19 00 - f0 fd 19 00 68 f8 19 00  _..w........h...
 0019f770  a4 f7 19 00 1c 67 4b 00 - 34 a5 45 00 ff ff ff ff  .....gK.4.E.....
 0019f780  18 f8 19 00 00 00 02 00 - 68 f8 19 00 f0 fd 19 00  ........h.......
 0019f790  32 00 00 00 00 c0 19 00 - 00 00 1a 00 00 00 00 00  2...............
-0019f7a0  00 00 00 00 44 0e 02 00 - 00 00 00 00 00 00 73 00  ....D.........s.
-0019f7b0  40 0e 02 00 02 02 00 00 - dc f7 19 00 4e f9 9d 77  @...........N..w
-0019f7c0  4e 00 00 00 4e f9 9d 77 - 00 00 00 00 00 00 00 00  N...N..w........
+0019f7a0  00 00 00 00 dc 0d 02 00 - 00 00 00 00 00 00 50 00  ..............P.
+0019f7b0  d8 0d 02 00 40 f8 19 00 - dc f7 19 00 4e f9 16 77  ....@.......N..w
+0019f7c0  4e 00 00 00 4e f9 16 77 - 00 00 00 00 00 00 00 00  N...N..w........
 0019f7d0  00 00 00 00 bc fa 19 00 - 38 f8 19 00 4c fa 19 00  ........8...L...
-0019f7e0  92 f6 9d 77 88 b9 75 00 - 38 f8 19 00 44 00 00 00  ...w..u.8...D...
+0019f7e0  92 f6 16 77 40 a0 52 00 - 38 f8 19 00 44 00 00 00  ...w@.R.8...D...
 
 disassembling:
 [...]

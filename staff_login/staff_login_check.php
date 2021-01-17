@@ -48,8 +48,7 @@ try {
         $_SESSION['login']=1;
         $_SESSION['staff_code']=$staff_code;
         $_SESSION['staff_pass']=$staff_pass;
-        $_SESSION['staff_name']=(string)$rec;
-
+        $_SESSION['staff_name']=$rec['name'];
         header('Location:./staff_top.php');
         exit();
     }

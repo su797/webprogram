@@ -29,10 +29,12 @@ $pro_name=$_POST['name'];
 $pro_price=$_POST['price'];
 $pro_gazou_name_old=$_POST['gazou_name_old'];
 $pro_gazou=$_FILES['gazou'];
+$pro_num=$_POST['num'];
 
 $pro_code=htmlspecialchars($pro_code,ENT_QUOTES,'UTF-8');
 $pro_name=htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
 $pro_price=htmlspecialchars($pro_price,ENT_QUOTES,'UTF-8');
+$pro_num=htmlspecialchars($pro_num,ENT_QUOTES,'UTF-8');
 
 if($pro_name=='')
 {
@@ -56,6 +58,18 @@ else
     print $pro_price;
     print '円<br />';
 }
+
+if(preg_match('/\A[0-9]+\z/',$pro_num)==0)
+{
+    print '価格をきちんと入力してください。<br />';
+}
+
+else
+{
+    print '在庫数：';
+    print $pro_num;
+}
+
 if ($pro_gazou['size']>0)
 {
     if ($pro_gazou['size']>1000000)
@@ -85,6 +99,8 @@ else
     print '<input type="hidden" name="price" value="'.$pro_price.'">';
     print '<input type="hidden" name="gazou_name_old" value="'.$pro_gazou_name_old.'">';
     print '<input type="hidden" name="gazou_name" value="'.$pro_gazou['name'].'">';
+    print '<input type="hidden" name="num" value="'.$pro_num.'">';
+
     print '<br />';
     print '<input type="button" onclick="history.back()" value="戻る">';
     print '<input type="submit" value="OK">';

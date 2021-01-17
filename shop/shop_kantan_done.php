@@ -58,25 +58,43 @@ $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 for($i=0;$i<$max;$i++)
 {
-	$sql='SELECT name,price FROM mst_product WHERE code=?';
+	$sql='SELECT name,price,num FROM mst_product WHERE code=?';
 	$stmt=$dbh->prepare($sql);
 	$data[0]=$cart[$i];
 	$stmt->execute($data);
 
-	$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+    $rec=$stmt->fetch(PDO::FETCH_ASSOC);
+    $name=$rec['name'];
+    $price=$rec['price'];
 
-	$name=$rec['name'];
-	$price=$rec['price'];
-	$kakaku[]=$price;
-	$suryo=$kazu[$i];
-	$shokei=$price*$suryo;
+    $kakaku[]=$price;
+    $suryo=(int)$kazu[$i];
+    $shokei=$price*$suryo;
 
-	$honbun.=$name.' ';
-	$honbun.=$price.'円 x ';
-	$honbun.=$suryo.'個 = ';
-	$honbun.=$shokei."円\n";
+    $num_old=(int)$rec['num'];
+    $set_num=0;
+    if($suryo>$num_old){
+        print $name."は{$num_old}個だけ注文しました。<br />";
+        $suryo=$num_old;
+    }else{
+        $set_num=$num_old-$suryo;
+    }
+
+    $sql='UPDATE mst_product SET num=? WHERE code=?';
+    $stmt=$dbh->prepare($sql);
+    $update_data=[];
+    $update_data[]=$set_num;
+    $update_data[]=$cart[$i];
+
+    $stmt->execute($update_data);
+
+
+
+    $honbun.=$name.' ';
+    $honbun.=$price.'円 x ';
+    $honbun.=$suryo.'個 = ';
+    $honbun.=$shokei."円\n";
 }
-
 $sql='LOCK TABLES dat_sales WRITE,dat_sales_product WRITE';
 $stmt=$dbh->prepare($sql);
 $stmt->execute();
@@ -154,6 +172,8 @@ mb_send_mail('info@rokumarunouen.co.jp',$title,$honbun,$header);
 }
 catch (Exception $e)
 {
+    echo "<pre>";
+    print_r($e);
 	print 'ただいま障害により大変ご迷惑をお掛けしております。';
 	exit();
 }

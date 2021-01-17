@@ -34,7 +34,7 @@ try {
     $dbh=new PDO($dsn,$user,$password);
     $dbh ->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-    $sql='SELECT name,price,gazou FROM mst_product WHERE code=?';
+    $sql='SELECT name,price,gazou,num FROM mst_product WHERE code=?';
     $stmt=$dbh->prepare($sql);
     $data[]=$pro_code;
     $stmt->execute($data);
@@ -43,6 +43,7 @@ try {
     $pro_name=$rec['name'];
     $pro_price=$rec['price'];
     $pro_gazou_name=$rec['gazou'];
+    $pro_num=$rec['num'];
 
     $dbh=null;
 
@@ -74,6 +75,11 @@ print $pro_code;
 商品名<br />
 <?php
 print $pro_name;
+?>
+<br />
+在庫数<br />
+<?php
+print $pro_num;
 ?>
 <br />
 価格<br />

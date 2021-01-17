@@ -10,7 +10,8 @@ if(isset($_SESSION['member_login'])==false)
 else
 {
     print 'ようこそ';
-    print $_SESSION['meber_name'];
+    print @$_SESSION['member_name'];
+
     print '様 ';
     print '<a href="member_logout.php">ログアウト</a><br />';
     print '<br />';
@@ -33,6 +34,7 @@ try {
     {
         $cart=$_SESSION['cart'];
         $kazu=$_SESSION['kazu'];
+
         if (in_array($pro_code,$cart)==true)
         {
             print 'その商品はすでにカートに入っています。<br />';
@@ -43,6 +45,7 @@ try {
 
     $cart[]=$pro_code;
     $kazu[]=1;
+
     $_SESSION['cart']=$cart;
     $_SESSION['kazu']=$kazu;
 
